@@ -1,0 +1,60 @@
+name: Source delivery
+about: Deliver one or more S03E01 source resources for intake
+labels: [source-delivery]
+title: "Source delivery: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this ticket to announce a source resource for S03E01 intake.
+
+        Do not paste credentials, bearer tokens, cookies, private signed URLs, or source content into this public issue. The resource link must be safe for everyone with repository access to see.
+  - type: input
+    id: source-package
+    attributes:
+      label: Source package
+      description: Stable package or delivery identifier.
+      placeholder: S03E01-night-2026-11-12
+    validations:
+      required: true
+  - type: textarea
+    id: resources
+    attributes:
+      label: Resource links
+      description: One URL per line. Each URL must be directly downloadable without credentials and must remain available during intake.
+      placeholder: |
+        SRC-01 memo: https://example.invalid/memo.docx
+        SRC-02 screenshot: https://example.invalid/screenshot.png
+    validations:
+      required: true
+  - type: textarea
+    id: source-map
+    attributes:
+      label: Source mapping
+      description: Map each resource to SRC-01 through SRC-05 and include the original filename and MIME type when known.
+      placeholder: |
+        SRC-01 | memo.docx | application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        SRC-02 | screenshot.png | image/png
+    validations:
+      required: true
+  - type: textarea
+    id: checksums
+    attributes:
+      label: Checksums and sizes
+      description: Optional but preferred. Include SHA-256 and byte size for each resource.
+      placeholder: |
+        SRC-01 | sha256: ... | bytes: ...
+  - type: textarea
+    id: delivery-notes
+    attributes:
+      label: Delivery notes
+      description: Explain expiry, access limits, expected files, or anything the reviewer must know.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: I confirm that the links and text in this public issue contain no credentials, tokens, cookies, or private signed URLs.
+          required: true
+        - label: I confirm that the listed resources may be downloaded by the harness for private review and will not be committed to this public repository.
+          required: true

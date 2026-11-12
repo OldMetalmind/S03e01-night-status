@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: S03E01 public status page
+    url: https://oldmetalmind.github.io/s03e01/
+    about: View the current sanitized status-page scaffold.

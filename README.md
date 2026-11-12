@@ -10,7 +10,7 @@ The deployable page is published at:
 
 This repository contains only the static page, sanitized requirements data, and publication tooling. The five original source files, private review evidence, Cloudflare credentials, `UPLOAD_TOKEN`, cookies, and tokenized Challenge URLs must never be committed here.
 
-Source intake is handled separately. Requirements become public only after Product resolves conflicts and MEGA.dev accepts the consolidated list.
+Source intake is handled through a public GitHub **Source delivery** ticket. See [SOURCE-DELIVERY.md](SOURCE-DELIVERY.md). Requirements become public only after Product resolves conflicts and MEGA.dev accepts the consolidated list. Cloudflare is not an active intake or publication dependency.
 
 ## Local preview
 
