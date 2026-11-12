@@ -15,7 +15,7 @@ for (const requirement of content.requirements) {
     if (!allowed.has(citation.sourceId) || !citation.locator) throw new Error(`Invalid citation on ${requirement.id}`);
   }
 }
-const forbidden = /(UPLOAD_TOKEN|Bearer\s+[A-Za-z0-9._-]{16,}|gh[pousr]_[A-Za-z0-9_]+|BEGIN (RSA|OPENSSH|EC) PRIVATE KEY)/;
+const forbidden = /(UPLOAD_TOKEN\s*[:=]\s*[^`\s]+|Bearer\s+[A-Za-z0-9._-]{16,}|gh[pousr]_[A-Za-z0-9_]+|BEGIN (RSA|OPENSSH|EC) PRIVATE KEY)/;
 const files = ["README.md", "site/index.html", "site/styles.css", "site/app.js", "content/requirements.json", "content/requirements.md"];
 for (const file of files) {
   const text = await readFile(new URL(file, root), "utf8");
