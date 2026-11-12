@@ -15,7 +15,7 @@ if [[ -n "$(git status --short)" ]]; then
 fi
 
 git clone --depth 1 "https://github.com/${repo}.git" "$tmp/pages"
-rm -rf "$tmp/pages"/* "$tmp/pages"/.[!.]* "$tmp/pages"/..?* 2>/dev/null || true
+find "$tmp/pages" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp site/index.html site/styles.css site/app.js "$tmp/pages"/
 cp -R content "$tmp/pages/content"
 printf '%s\n' "$source_commit" > "$tmp/pages/PROJECT_COMMIT_SHA"
