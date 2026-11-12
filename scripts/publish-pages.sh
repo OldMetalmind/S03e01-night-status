@@ -18,7 +18,7 @@ git clone --depth 1 "https://github.com/${repo}.git" "$tmp/pages"
 rm -rf "$tmp/pages"/* "$tmp/pages"/.[!.]* "$tmp/pages"/..?* 2>/dev/null || true
 cp site/index.html site/styles.css site/app.js "$tmp/pages"/
 cp -R content "$tmp/pages/content"
-printf '%s\n' "$(git rev-parse HEAD)" > "$tmp/pages/PROJECT_COMMIT_SHA"
+printf '%s\n' "$source_commit" > "$tmp/pages/PROJECT_COMMIT_SHA"
 cat > "$tmp/pages/README.md" <<EOF
 # S03E01 GitHub Pages
 
@@ -26,7 +26,7 @@ Published from [OldMetalmind/S03e01-night-status](https://github.com/OldMetalmin
 
 Public URL: https://oldmetalmind.github.io/s03e01/
 
-Project commit: $(git rev-parse HEAD)
+Project commit: ${source_commit}
 
 Original source files, private evidence, credentials, and upload tokens are not published here.
 EOF
