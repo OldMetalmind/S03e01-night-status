@@ -16,7 +16,7 @@ fi
 
 git clone --depth 1 "https://github.com/${repo}.git" "$tmp/pages"
 find "$tmp/pages" -mindepth 1 -maxdepth 1 ! -name .git ! -name .github ! -name .nojekyll -exec rm -rf {} +
-cp site/index.html site/styles.css site/app.js "$tmp/pages"/
+cp site/index.html site/styles.css site/app.js site/favicon.svg "$tmp/pages"/
 cp -R content "$tmp/pages/content"
 printf '%s\n' "$source_commit" > "$tmp/pages/PROJECT_COMMIT_SHA"
 cat > "$tmp/pages/README.md" <<EOF
