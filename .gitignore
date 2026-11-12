@@ -1,0 +1,27 @@
+# Never publish source evidence or local review material.
+sources/
+review/
+inputs/
+*.m4a
+*.mp3
+*.mp4
+*.mov
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# Credentials and local tooling
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*token*
+*secret*
+.cookies/
+.playwright-mcp/
+.DS_Store
+node_modules/

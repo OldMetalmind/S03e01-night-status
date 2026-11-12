@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Public status page for MEGA.dev S03E01.">
+    <title>Status for the night</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="hero">
+      <div class="hero__inner">
+        <p class="eyebrow">S03E01 · NIGHT OPERATIONS</p>
+        <h1>Status for the night</h1>
+        <p class="hero__lede">A public, source-cited view of the night’s accepted status requirements.</p>
+        <span class="pill pill--pending" id="overall-state">Awaiting course acceptance</span>
+      </div>
+    </header>
+
+    <main id="main" class="shell">
+      <section class="intro" aria-labelledby="summary-title">
+        <div>
+          <p class="eyebrow">PUBLIC STATUS</p>
+          <h2 id="summary-title">The requirements are still being gathered.</h2>
+          <p id="summary-copy">The five source files have not yet been delivered or reviewed. This page is a public scaffold and does not claim that the Challenge is solved.</p>
+        </div>
+        <dl class="meta-list">
+          <div><dt>Last updated</dt><dd id="last-updated">—</dd></div>
+          <div><dt>Sources reviewed</dt><dd id="source-count">0 of 6</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="requirements-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SOURCE-CITED WORK</p>
+            <h2 id="requirements-title">Requirements</h2>
+          </div>
+          <a class="text-link" href="content/requirements.json">View JSON</a>
+        </div>
+        <div id="requirements" class="requirements" aria-live="polite"></div>
+      </section>
+
+      <section class="panel panel--quiet" aria-labelledby="sources-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">TRACEABILITY</p>
+            <h2 id="sources-title">Source pack</h2>
+          </div>
+        </div>
+        <div class="source-grid" id="sources"></div>
+      </section>
+    </main>
+
+    <footer class="footer shell">
+      <p>Original source files and credentials are kept out of this public site.</p>
+      <p><a href="https://github.com/OldMetalmind/S03e01-night-status">Project repository</a> · <span>All times shown by the accepted requirements.</span></p>
+    </footer>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

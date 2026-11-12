@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "state": "awaiting-course-acceptance",
+  "title": "status for the night",
+  "lastUpdated": "2026-11-12",
+  "requirements": [
+    {
+      "id": "candidate-tram-3-board-message",
+      "text": "The status page should say \"read by tram 3 boards\".",
+      "state": "candidate",
+      "citations": [
+        {
+          "sourceId": "SRC-06",
+          "locator": "Challenge-page tram 3 board note",
+          "note": "Candidate evidence only; not yet part of an accepted requirements list."
+        }
+      ]
+    }
+  ]
+}
