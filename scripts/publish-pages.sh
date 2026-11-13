@@ -26,7 +26,7 @@ Published from [OldMetalmind/S03e01-night-status](https://github.com/OldMetalmin
 
 Rollback URL: https://oldmetalmind.github.io/s03e01/
 
-The intended active host is the Render Web Service `s03e01-night-status`; keep GitHub Pages active until its HTTPS checks pass, then retain this repository and content for rollback.
+The intended active host is the Render Web Service named s03e01-night-status; keep GitHub Pages active until its HTTPS checks pass, then retain this repository and content for rollback.
 
 Project commit: ${source_commit}
 
