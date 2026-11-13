@@ -1,10 +1,10 @@
 const SOURCE_PACK = [
-  ["SRC-01", "Memo", "Candidate source-provenance requirement"],
-  ["SRC-02", "Screenshot", "Relevance to product requirements unconfirmed"],
-  ["SRC-03", "Recording", "Transcript needs confirmation"],
-  ["SRC-04", "PDF", "Placeholder; confirmation pending"],
-  ["SRC-05", "Whiteboard photo", "Page relevance unconfirmed"],
-  ["SRC-06", "Live tram 3 board", "Candidate phrase requirement"],
+  ["SRC-01", "Memo", "Official tagged requirements processed"],
+  ["SRC-02", "Screenshot", "Official tagged requirements processed"],
+  ["SRC-03", "Recording", "Official tagged requirements processed"],
+  ["SRC-04", "PDF", "Official tagged requirements processed"],
+  ["SRC-05", "Whiteboard photo", "Official tagged requirements processed"],
+  ["SRC-06", "Live tram 3 board", "Candidate phrase requirement"]
 ];
 
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({

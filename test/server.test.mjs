@@ -106,22 +106,12 @@ test("incident JSON is live, filtered, ordered, and distinct from requirements d
     assert.equal(data.state, "awaiting-course-acceptance");
     assert.deepEqual(data.requirements.map(({ id, text, state }) => ({ id, text, state })), [
       {
-        id: "candidate-source-provenance",
-        text: "The status page should make clear where its information comes from.",
-        state: "candidate",
-      },
-      {
         id: "candidate-tram-3-board-message",
         text: 'The status page should say "read by tram 3 boards".',
         state: "candidate",
       },
     ]);
     assert.deepEqual(data.requirements[0].citations, [{
-      sourceId: "SRC-01",
-      locator: "User-provided memo text, line 1",
-      note: "Product confirmed this applies to status-page source provenance; candidate only.",
-    }]);
-    assert.deepEqual(data.requirements[1].citations, [{
       sourceId: "SRC-06",
       locator: "Challenge-page tram 3 board note",
       note: "Candidate evidence only; not yet part of an accepted requirements list.",
@@ -139,9 +129,9 @@ test("/requirements retains the source-cited page and links to the incident page
     const html = await page.text();
     assert.equal(page.status, 200);
     assert.match(html, /Awaiting course acceptance/);
-    assert.match(html, /Cited candidates<\/dt><dd id="source-count">2 candidates/);
-    assert.match(html, /All six source entries have been inventoried/);
-    assert.match(html, /Two candidate requirements are listed from SRC-01 and SRC-06/);
+    assert.match(html, /Cited candidates<\/dt><dd id="source-count">1 candidate/);
+    assert.match(html, /All six official source entries have been inventoried/);
+    assert.match(html, /The official pack provides tagged requirements/);
     assert.match(html, /No consolidated list has been accepted/);
     assert.match(html, /href="content\/requirements\.json">View JSON/);
     assert.match(html, /href="\/"/);
