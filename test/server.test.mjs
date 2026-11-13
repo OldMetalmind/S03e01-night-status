@@ -139,6 +139,7 @@ test("/requirements retains the source-cited page and links to the incident page
     const html = await page.text();
     assert.equal(page.status, 200);
     assert.match(html, /Awaiting course acceptance/);
+    assert.match(html, /Cited candidates<\/dt><dd id="source-count">2 candidates/);
     assert.match(html, /All six source entries have been inventoried/);
     assert.match(html, /Two candidate requirements are listed from SRC-01 and SRC-06/);
     assert.match(html, /No consolidated list has been accepted/);
