@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "state": "awaiting-course-acceptance",
   "title": "status for the night",
-  "lastUpdated": "2026-11-12",
+  "lastUpdated": "2026-11-13",
   "requirements": [
     {
       "id": "candidate-tram-3-board-message",

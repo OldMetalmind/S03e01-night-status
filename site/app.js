@@ -1,10 +1,10 @@
 const SOURCE_PACK = [
-  ["SRC-01", "Memo"],
-  ["SRC-02", "Screenshot"],
-  ["SRC-03", "Recording"],
-  ["SRC-04", "PDF"],
-  ["SRC-05", "Whiteboard photo"],
-  ["SRC-06", "Live tram 3 board"],
+  ["SRC-01", "Memo", "Scope and completeness unconfirmed"],
+  ["SRC-02", "Screenshot", "Relevance to product requirements unconfirmed"],
+  ["SRC-03", "Recording", "Transcript needs confirmation"],
+  ["SRC-04", "PDF", "Placeholder; confirmation pending"],
+  ["SRC-05", "Whiteboard photo", "Page relevance unconfirmed"],
+  ["SRC-06", "Live tram 3 board", "Candidate evidence"],
 ];
 
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
@@ -12,10 +12,10 @@ const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => 
 }[char]));
 
 function renderSources() {
-  document.querySelector("#sources").innerHTML = SOURCE_PACK.map(([id, label]) => `
+  document.querySelector("#sources").innerHTML = SOURCE_PACK.map(([id, label, status]) => `
     <div class="source-card">
       <strong>${id}</strong>
-      <span>${label} · ${id === "SRC-06" ? "Reviewed candidate evidence" : "Awaiting delivery"}</span>
+      <span>${escapeHtml(label)} · ${escapeHtml(status)}</span>
     </div>
   `).join("");
 }
@@ -50,7 +50,8 @@ async function load() {
     document.querySelector("#overall-state").textContent = accepted ? "Accepted requirements" : "Awaiting course acceptance";
     document.querySelector("#overall-state").className = `pill ${accepted ? "pill--accepted" : "pill--pending"}`;
     document.querySelector("#last-updated").textContent = data.lastUpdated || "—";
-    document.querySelector("#source-count").textContent = `${data.requirements?.length || 0} cited requirement${data.requirements?.length === 1 ? "" : "s"}`;
+    const candidateCount = data.requirements?.filter((requirement) => requirement.state === "candidate").length || 0;
+    document.querySelector("#source-count").textContent = `${candidateCount} candidate${candidateCount === 1 ? "" : "s"}`;
     renderRequirements(data);
   } catch (error) {
     document.querySelector("#requirements").innerHTML = "<p>Requirements are temporarily unavailable.</p>";

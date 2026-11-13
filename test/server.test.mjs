@@ -129,7 +129,9 @@ test("/requirements retains the source-cited page and links to the incident page
     const html = await page.text();
     assert.equal(page.status, 200);
     assert.match(html, /Awaiting course acceptance/);
-    assert.match(html, /The five source files have not yet been delivered or reviewed/);
+    assert.match(html, /All six source entries have been inventoried/);
+    assert.match(html, /Several need context or confirmation/);
+    assert.match(html, /no consolidated list has been accepted/);
     assert.match(html, /href="content\/requirements\.json">View JSON/);
     assert.match(html, /href="\/"/);
     assert.match(html, /Incident status/);
