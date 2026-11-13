@@ -5,6 +5,18 @@
   "lastUpdated": "2026-11-13",
   "requirements": [
     {
+      "id": "candidate-source-provenance",
+      "text": "The status page should make clear where its information comes from.",
+      "state": "candidate",
+      "citations": [
+        {
+          "sourceId": "SRC-01",
+          "locator": "User-provided memo text, line 1",
+          "note": "Product confirmed this applies to status-page source provenance; candidate only."
+        }
+      ]
+    },
+    {
       "id": "candidate-tram-3-board-message",
       "text": "The status page should say \"read by tram 3 boards\".",
       "state": "candidate",
