@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: s03e01-night-status
+    runtime: node
+    plan: free
+    branch: main
+    autoDeploy: true
+    buildCommand: npm run build
+    startCommand: node server.mjs
+    healthCheckPath: /healthz

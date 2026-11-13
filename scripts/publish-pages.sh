@@ -20,11 +20,13 @@ cp site/index.html site/styles.css site/app.js site/favicon.svg "$tmp/pages"/
 cp -R content "$tmp/pages/content"
 printf '%s\n' "$source_commit" > "$tmp/pages/PROJECT_COMMIT_SHA"
 cat > "$tmp/pages/README.md" <<EOF
-# S03E01 GitHub Pages
+# S03E01 GitHub Pages rollback copy
 
-Published from [OldMetalmind/S03e01-night-status](https://github.com/OldMetalmind/S03e01-night-status).
+Published from [OldMetalmind/S03e01-night-status](https://github.com/OldMetalmind/S03e01-night-status) for rollback only.
 
-Public URL: https://oldmetalmind.github.io/s03e01/
+Rollback URL: https://oldmetalmind.github.io/s03e01/
+
+The intended active host is the Render Web Service `s03e01-night-status`; keep GitHub Pages active until its HTTPS checks pass, then retain this repository and content for rollback.
 
 Project commit: ${source_commit}
 

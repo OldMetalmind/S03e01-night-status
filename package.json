@@ -1,0 +1,15 @@
+{
+  "name": "s03e01-night-status",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node --check server.mjs && node scripts/validate-content.mjs && node --test",
+    "start": "node server.mjs",
+    "validate": "node scripts/validate-content.mjs",
+    "test": "node --test"
+  }
+}
