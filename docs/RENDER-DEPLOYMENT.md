@@ -2,7 +2,7 @@
 
 ## Prepared configuration
 
-`render.yaml` defines a **Node.js Web Service** named `s03e01-night-status`, tracking the `main` branch of this repository, with automatic deploys, the free plan, a build-time validation/test command, and `/healthz` as the health check. `server.mjs` binds to `0.0.0.0` and uses Render's `PORT`. The service has no runtime dependencies or upstream incident-feed integration.
+`render.yaml` defines a **Node.js Web Service** named `s03e01-night-status`, tracking the `main` branch of this repository, with automatic deploys, the free plan, a build-time validation/test command, and `/healthz` as the health check. `server.mjs` binds to `0.0.0.0` and uses Render's `PORT`. The incident routes fetch MEGA.dev's public feed on each request with a 10-second timeout and no credentials. No polling, cron job, or runtime dependency is used.
 
 The expected host URL is `https://s03e01-night-status.onrender.com`; Render may require a different available hostname. Record the actual URL after creating the service and use it as canonical only after all cutover checks pass.
 
@@ -26,18 +26,18 @@ This runs the syntax check, requirements validator, and HTTP server tests. Rende
 2. Wait for a successful deploy and HTTPS health check. Use the actual Render URL shown by the service.
 3. Verify these endpoints over HTTPS:
    - `/healthz` returns `200` and `ok`.
-   - `/` displays the status page and its exact pre-acceptance message.
-   - `/content/requirements.json` contains the current sanitized candidate data.
-   - `/status.json` returns the same JSON as `/content/requirements.json`.
-4. Check that the page remains marked **Awaiting course acceptance**, and the candidate wording remains exactly `The status page should say "read by tram 3 boards".` with state `candidate`. Do not imply the challenge is solved or promote the candidate to an accepted requirement.
-5. Confirm that no originals, private evidence, signed URLs, credentials, or tokens are exposed. The server allowlists only the page assets and sanitized JSON.
+   - `/` renders live incident status and `/status.json` returns the corresponding live incident JSON.
+   - `/requirements` remains marked **Awaiting course acceptance**.
+   - `/content/requirements.json` contains the current sanitized candidate data and is distinct from `/status.json`.
+4. Check that the candidate wording remains exactly `The status page should say "read by tram 3 boards".` with state `candidate`. Do not imply the challenge is solved or promote the candidate to an accepted requirement.
+5. Confirm that no originals, private evidence, signed URLs, credentials, or tokens are exposed. The server allowlists only the public page assets, incident routes, and sanitized requirements JSON.
 6. Only after all checks pass, update the project/public-page documentation with the verified canonical URL, disable GitHub Pages publishing and hosting, and retain the Pages repository and its content for rollback. Until then, leave the existing Pages site active. Do not run `scripts/publish-pages.sh` as part of normal Render deployment.
 
 ## Endpoint behavior
 
-- `GET /` serves the page; `GET /app.js`, `/styles.css`, and `/favicon.svg` serve its existing assets.
-- `GET /content/requirements.json` and `GET /status.json` return the same sanitized JSON with a 30-second cache lifetime.
-- `GET /healthz` returns a simple health response.
-- `HEAD` is supported for the page and JSON routes. Unknown paths return `404`; unsupported methods return `405` with an `Allow` header. Malformed path encodings return `400`.
+- `GET /` renders live incidents; `GET /status.json` returns the same filtered incident data as JSON. Each GET or HEAD request to either route fetches the upstream feed with a 10-second timeout. Successful responses allow CORS and use `Cache-Control: public, max-age=30`; upstream failures return non-cacheable `503` responses.
+- `GET /requirements` serves the source-cited, pre-acceptance page; `GET /content/requirements.json` serves its distinct sanitized data with a 30-second cache lifetime. `/app.js`, `/styles.css`, and `/favicon.svg` remain its assets.
+- `GET /healthz` returns a simple health response. `OPTIONS` supports CORS preflight.
+- `HEAD` is supported for page and JSON routes. Unknown paths return `404`; unsupported methods return `405` with an `Allow` header. Malformed path encodings return `400`.
 
-The separate 30-second tram-board capture workflow remains separate; snapshots are not published or integrated into this page.
+The separate 30-second tram-board capture workflow remains separate; snapshots are not published or integrated into this page. The incident feed is refreshed only in response to origin page/JSON requests; there is no polling or cron job.

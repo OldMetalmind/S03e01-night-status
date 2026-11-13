@@ -34,11 +34,11 @@ npm run build
 
 You can also run the checks individually with `npm run validate` and `npm test`.
 
-The server binds to `0.0.0.0` and uses `PORT` when set. It serves only the allowlisted site assets and sanitized `content/requirements.json`; it does not expose the rest of the repository or connect to an upstream incidents feed.
+The server binds to `0.0.0.0` and uses `PORT` when set. `GET /` and `/status.json` fetch the public MEGA.dev incident feed per request; the source-cited requirements page remains at `/requirements`, and `/content/requirements.json` serves only its sanitized data. The server does not expose the rest of the repository or use credentials for the feed.
 
 ## Repository layout
 
-- `site/` — deployable page and assets
+- `site/` — source-cited requirements page and its assets
 - `content/` — sanitized requirements and source-citation data
 - `server.mjs` — dependency-free HTTP server
 - `test/` — Node.js HTTP behavior tests
